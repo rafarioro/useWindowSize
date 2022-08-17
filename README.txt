@@ -7,10 +7,10 @@ export default function Home() {
 
 
   return (
-<!--     <div>
+    <div>
       <h1> width: {size.innerWidth} </h1>
        <h1> heigth: {size.innerHeight} </h1>
-    </div> -->
+    </div>
   )
 }
 
