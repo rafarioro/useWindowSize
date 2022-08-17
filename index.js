@@ -1,29 +1,31 @@
+
 import { useState, useEffect } from 'react';
 
+const useGetWindowSize = () => {
+const [width, setWidth] = useState(0)
+const [height, setHeight] = useState(0)
 
-function useGetWindowSize() {
-    const [windowSize, setWindowSize] = useState(getWindowSize());
+const handleWindowResize = () => {
+  setWidth(window.innerWidth);
+  setHeight(window.innerHeight);
+}
 
-    useEffect(() => {
-      function handleResize() {
-        setWindowSize(getWindowSize());
-      }
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+useEffect(() => {
+  // component is mounted and window is available
+  handleWindowResize();
+  window.addEventListener('resize', handleWindowResize);
+  // unsubscribe from the event on component unmount
+  return () => window.removeEventListener('resize', handleWindowResize);
+}, []);
 
-
-    return windowSize;
+return [width, height]
 
 }
 
-function getWindowSize() {
-    const {innerWidth, innerHeight} = window;
-    return {innerWidth, innerHeight};
-  }
 
 export default useGetWindowSize;
+
+
+//usage
+
+//const [width, height] = useGetWindowSize()
