@@ -1,6 +1,6 @@
 //example
 
-import useGetWindowSize from '../src/hooks/useGetWindowSize';
+<!-- import useGetWindowSize from '../src/hooks/useGetWindowSize';
 
 export default function Home() {
   const size = useGetWindowSize()
@@ -13,3 +13,4 @@ export default function Home() {
     </div>
   )
 }
+ -->
